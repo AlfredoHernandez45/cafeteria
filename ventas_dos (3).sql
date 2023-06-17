@@ -21,13 +21,16 @@ SET time_zone = "+00:00";
 -- Base de datos: `ventas_dos`
 --
 
+CREATE DATABASE IF NOT EXISTS `ventas_dos`;
+USE `ventas_dos`;
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `articulos`
 --
 
-CREATE TABLE `articulos` (
+CREATE TABLE IF NOT EXISTS `articulos` (
   `cveArticulo` varchar(50) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `precio` float NOT NULL
@@ -49,7 +52,7 @@ INSERT INTO `articulos` (`cveArticulo`, `nombre`, `precio`) VALUES
 -- Estructura de tabla para la tabla `carrito`
 --
 
-CREATE TABLE `carrito` (
+CREATE TABLE IF NOT EXISTS `carrito` (
   `id_compra` int(50) NOT NULL,
   `correo` varchar(50) DEFAULT NULL,
   `cveArticulo` varchar(50) NOT NULL,
@@ -77,7 +80,7 @@ INSERT INTO `carrito` (`id_compra`, `correo`, `cveArticulo`, `cantidadProducto`,
 -- Estructura de tabla para la tabla `detalleventa`
 --
 
-CREATE TABLE `detalleventa` (
+CREATE TABLE IF NOT EXISTS `detalleventa` (
   `claveDetalle` int(50) NOT NULL,
   `claveVenta` int(50) NOT NULL,
   `correoUsuario` varchar(50) NOT NULL,
@@ -95,7 +98,7 @@ CREATE TABLE `detalleventa` (
 -- Estructura de tabla para la tabla `pago`
 --
 
-CREATE TABLE `pago` (
+CREATE TABLE IF NOT EXISTS `pago` (
   `clavePago` int(50) NOT NULL,
   `opcionPago` varchar(50) NOT NULL,
   `cuentaBancaria` varchar(50) NOT NULL,
@@ -111,7 +114,7 @@ CREATE TABLE `pago` (
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `usuarios` (
+CREATE TABLE IF NOT EXISTS `usuarios` (
   `correo` varchar(50) NOT NULL,
   `contrasena` varchar(50) NOT NULL,
   `nombre` varchar(50) NOT NULL
@@ -133,7 +136,7 @@ INSERT INTO `usuarios` (`correo`, `contrasena`, `nombre`) VALUES
 -- Estructura de tabla para la tabla `venta`
 --
 
-CREATE TABLE `venta` (
+CREATE TABLE IF NOT EXISTS `venta` (
   `claveVenta` int(50) NOT NULL,
   `cveArticulo` varchar(50) NOT NULL,
   `cantidadProducto` int(11) NOT NULL,
