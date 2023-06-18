@@ -181,4 +181,4 @@ ALTER TABLE `venta`
 --
 ALTER TABLE `carrito`
   ADD CONSTRAINT `carrito_ibfk_2` FOREIGN KEY (`cveArticulo`) REFERENCES `articulos` (`cveArticulo`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
+
