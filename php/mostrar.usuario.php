@@ -10,6 +10,28 @@ $crudUsuario = new crudUsuario();
 $usuario = new Usuario();
 // Obtiene todos los articulos usando el método mostrar de la clase CRUD
 $listaArticulos = $crud->mostrar();
+
+
+// asignar un usuario aleatorio para identificar los
+function generarTextoAleatorio($longitud)
+{
+	$caracteres = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+	$textoAleatorio = '';
+
+	for ($i = 0; $i < $longitud; $i++) {
+		$textoAleatorio .= $caracteres[rand(0, strlen($caracteres) - 1)];
+	}
+
+	return $textoAleatorio;
+}
+
+// Ejemplo de uso
+$texto = generarTextoAleatorio(10);
+// echo $texto;
+
+// session_start();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -20,10 +42,10 @@ $listaArticulos = $crud->mostrar();
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Cafeteria</title>
-	
-	 <!-- Aquí se incluyen los enlaces de las hojas de estilo -->
+
+	<!-- Aquí se incluyen los enlaces de las hojas de estilo -->
 	<link rel="stylesheet" href="ste.css">
-    <!--<link rel="stylesheet" href="mainstyle.css">-->
+	<link rel="stylesheet" href="mainstyle-blog.php">
 </head>
 
 <body>
@@ -38,6 +60,7 @@ $listaArticulos = $crud->mostrar();
 			<li><a href="#home">Inicio</a></li>
 			<li><a href="#products">Productos</a></li> <!-- Vinculos del menu a direccionar -->
 			<li><a href="#direccion">Dirección y Contacto</a></li>
+			<li><a href="sesion.php">Iniciar Sesion</a></li>
 			<li><a href="../index/index.html">Cerra Sesión</a></li> <!-- iniciar sesion -->
 		</ul>
 
@@ -66,7 +89,7 @@ $listaArticulos = $crud->mostrar();
 		<!-- <a name="producttos"></a> Vinculos del menu a direccionar Productos -->
 		<section class="products" id="products">
 
-			 <!-- Aquí se muestra el título de la sección de productos -->
+			<!-- Aquí se muestra el título de la sección de productos -->
 			<div class="heading">
 				<h2>Productos</h2>
 			</div>
@@ -76,15 +99,19 @@ $listaArticulos = $crud->mostrar();
 				<div class="products-container">
 					<div class="box">
 
-						 <!-- Se muestra la imagen del producto -->
+						<!-- Se muestra la imagen del producto -->
 						<img src="im/comida1.jpg" alt="cafe">
 
 						<!-- Se muestra el nombre del producto -->
-						<h3><?php echo $articulo->getNombre(); ?></h3>						
+						<h3>
+							<?php echo $articulo->getNombre(); ?>
+						</h3>
 						<div class="content">
 
 							<!-- Se muestra el precio del producto -->
-							<span>$<?php echo $articulo->getPrecio(); ?> Mx</span>
+							<span>$
+								<?php echo $articulo->getPrecio(); ?> Mx
+							</span>
 
 							<!-- Se agrega el formulario para agregar al carrito -->
 							<form action="agregar_al_carrito.php" method="post">
@@ -102,6 +129,7 @@ $listaArticulos = $crud->mostrar();
 
 								<!-- Se agrega un campo para ingresar la cantidad deseada -->
 								<P>Cantidad: <input type="number" name="cantidad" value="1"></P>
+								<!-- <?php echo $texto; ?> texto para usuario -->
 
 								<!-- Se agrega un botón para enviar el formulario -->
 								<button type="submit" name="agregarCarrito">Agregar al carrito</button>
@@ -115,18 +143,20 @@ $listaArticulos = $crud->mostrar();
 		</section>
 	</center>
 	<!-- FINAL - Aquí se encuentran los productos -->
-	
- 	<!-- INICIO - Aquí se encuentra el pie de página -->
+
+	<!-- INICIO - Aquí se encuentra el pie de página -->
 	<a name="direccion"></a> <!-- Vinculos del menu a direccionar Productos -->
-	<div class="footer">
-		<p>
+	<footer>
+		<div class="footer">
+			<p>
 			<h3> Contacto: 9831234567 <br> Dirección: Av. Andres Quintana Roo entre Insurgentes y Juan José Siorda!
 				https://goo.gl/maps/ik7cVLSPsWrWVMNT9</h3>
-		</p>
-	</div>
+			</p>
+		</div>
+	</footer>
+
 	<!-- FINAL - Aquí se encuentra el pie de página -->
 
 </body>
 
 </html>
-
